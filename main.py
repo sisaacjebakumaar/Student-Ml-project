@@ -47,15 +47,21 @@ print("MSE:", mse)
 print("RMSE:", rmse)
 print("R2 Score:", r2)
 
-# New student data
+# Interactive prediction
+print("\n--- Student Performance Prediction ---")
+
+study_hours = float(input("Enter Study Hours: "))
+attendance = float(input("Enter Attendance (%): "))
+previous_mark = float(input("Enter Previous Mark: "))
+assignment = float(input("Enter Assignment Mark: "))
+
 new_student = pd.DataFrame({
-    "Study_Hours": [6],
-    "Attendance": [85],
-    "Previous_Mark": [75],
-    "Assignment": [80]
+    "Study_Hours": [study_hours],
+    "Attendance": [attendance],
+    "Previous_Mark": [previous_mark],
+    "Assignment": [assignment]
 })
 
-# Predict final mark
 predicted_mark = model.predict(new_student)
 
-print("Predicted Final Mark:", predicted_mark[0])
+print("\nPredicted Final Mark:", round(predicted_mark[0], 2))
